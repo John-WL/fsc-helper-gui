@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link href="./styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th><button id="import-midi-fst">Import midi .fst</button></th>
+        <th><input type="text" id="midi-fst-path"></input></th>
+      </tr>
+      <tr>
+        <th><button id="import-events-fst">Import events .fst</button></th>
+        <th><input type="text" id="events-fst-path"></input></th>
+      </tr>
+      <tr>
+        <th><button id="get-export-path">Midi .fst export path</button></th>
+        <th><input type="text" id="fst-export-path"></input></th>
+      </tr>
+      <tr>
+        <th><button id="export-midi-fst">Export</button></th>
+      </tr>
+    </table>
+    <script src="./src/app/renderer.js"></script>
+  </body>
+</html>
