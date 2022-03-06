@@ -4,8 +4,8 @@ const path = require('path')
 function createWindow() {
   // Create the browser window.
   return new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 500,
+    height: 200,
     title: 'fst helper',
     webPreferences: {
       nodeIntegration: true,
