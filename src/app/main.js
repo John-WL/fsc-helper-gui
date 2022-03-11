@@ -5,7 +5,7 @@ const fscExecutablePath = require('which').sync('fsc.exe');
 
 app.whenReady().then(() => {
     mainJsScript.main();
-    
+
     const macRecreateWindow = () => {
         if (BrowserWindow.getAllWindows().length === 0) mainJsScript.main();
     };
