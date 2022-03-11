@@ -19,7 +19,6 @@ app.on('window-all-closed', function () {
 const paths = {
     midi: "",
     events: "",
-    output: "",
 }
 
 ipcMain.on('OpenFileDialog', (_event, { target }) => {
@@ -37,6 +36,6 @@ ipcMain.on('exportMidiFsc', function (_event, data) {
     execFileSync(fscExecutablePath, [
         `--${data['events-type']}-from`, paths['events'],
         paths['midi'],
-        paths['output'],
+        paths['midi'],
     ]);
 });

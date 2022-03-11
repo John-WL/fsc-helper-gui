@@ -1,6 +1,6 @@
 const ipcRenderer = require('electron').ipcRenderer;
 
-['midi', 'events', 'output'].forEach(target => {
+['midi', 'events'].forEach(target => {
     document.getElementById(`get-${target}-fsc`).onclick = () => {
         ipcRenderer.send('OpenFileDialog', { target });
     };
