@@ -7,13 +7,17 @@
   "version": "1.0.0",
   "author": "John-William Lebel",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build:electron": "npm exec electron-packager . fsc-gui --platform=windows --arch=32",
+    "build:windows:inno": ".\\inno\\script.bat",
+    "build:windows": "npm run build:electron && npm run build:windows:inno"
   },
   "dependencies": {
     "open": "^8.4.0",
     "which": "^2.0.2"
   },
   "devDependencies": {
-    "electron": "16.0.2"
+    "electron": "16.0.2",
+    "electron-packager": "^15.4.0"
   }
 }

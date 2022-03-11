@@ -1,0 +1,3 @@
+[submodule "submodules/fsc"]
+	path = submodules/fsc
+	url = https://github.com/ljleb/fsc.git
