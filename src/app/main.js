@@ -1,22 +1,42 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const mainJsScript = require("./mainWindow.js");
+const { execFileSync } = require("child_process");
+const fscExecutablePath = require('which').sync('fsc.exe');
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  mainJsScript.main();
-
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) mainJsScript.main();
-  });
+    mainJsScript.main();
+    
+    const macRecreateWindow = () => {
+        if (BrowserWindow.getAllWindows().length === 0) mainJsScript.main();
+    };
+    app.on('activate', macRecreateWindow);
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+    if (process.platform !== 'darwin') app.quit()
+});
+
+const paths = {
+    midi: "",
+    events: "",
+    output: "",
+}
+
+ipcMain.on('OpenFileDialog', (_event, { target }) => {
+    const filePaths = dialog.showOpenDialogSync({
+        properties: ['openFile'],
+        filters: [
+            { name: 'MIDI Files', extensions: ['fsc'] },
+        ]
+    });
+
+    if (filePaths) paths[target] = filePaths[0];
+});
+
+ipcMain.on('exportMidiFsc', function (_event, data) {
+    execFileSync(fscExecutablePath, [
+        `--${data['events-type']}-from`, paths['events'],
+        paths['midi'],
+        paths['output'],
+    ]);
 });

@@ -10,7 +10,8 @@
     "start": "electron ."
   },
   "dependencies": {
-    "open": "^8.4.0"
+    "open": "^8.4.0",
+    "which": "^2.0.2"
   },
   "devDependencies": {
     "electron": "16.0.2"

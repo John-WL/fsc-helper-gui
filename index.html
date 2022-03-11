@@ -8,14 +8,18 @@
   <body>
     <table>
       <tr>
-        <th><button id="import-midi-fst">Import midi .fst</button></th>
-        <th><input type="text" id="midi-fst-path"></input></th>
+        <th>
+          <label for="get-midi-fsc">midi fsc</label>
+          <button id="get-midi-fsc">browse...</button>
+        </th>
       </tr>
       <tr>
-        <th><button id="import-events-fst">Import events .fst</button></th>
-        <th><input type="text" id="events-fst-path"></input></th>
         <th>
-          <select name="cars" id="cars">
+          <label for="get-events-fsc">events fsc</label>
+          <button id="get-events-fsc">browse...</button>
+        </th>
+        <th>
+          <select name="events-fsc-type" id="events-fsc-type">
             <option value="velocity">Velocity</option>
             <option value="release">Release</option>
             <option value="pan">Pan</option>
@@ -26,11 +30,13 @@
         </th>
       </tr>
       <tr>
-        <th><button id="get-export-path">Midi .fst export path</button></th>
-        <th><input type="text" id="fst-export-path"></input></th>
+        <th>
+          <label for="get-output-fsc">output fsc</label>
+          <button id="get-output-fsc">browse...</button>
+        </th>
       </tr>
       <tr>
-        <th><button id="export-midi-fst">Export</button></th>
+        <th><button id="export-midi-fsc">export</button></th>
       </tr>
     </table>
     <script src="./src/app/renderer.js"></script>

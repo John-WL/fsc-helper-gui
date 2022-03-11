@@ -1,19 +1,13 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// No Node.js APIs are available in this process because
-// `nodeIntegration` is turned off. Use `preload.js` to
-// selectively enable features needed in the rendering
-// process.
+const ipcRenderer = require('electron').ipcRenderer;
 
-document.getElementById("import-midi-fst").onclick = () => {
+['midi', 'events', 'output'].forEach(target => {
+    document.getElementById(`get-${target}-fsc`).onclick = () => {
+        ipcRenderer.send('OpenFileDialog', { target });
+    };
+});
 
-};
-document.getElementById("import-events-fst").onclick = () => {
-
-};
-document.getElementById("get-export-path").onclick = () => {
-
-};
-document.getElementById("export-midi-fst").onclick = () => {
-
+document.getElementById("export-midi-fsc").onclick = () => {
+    ipcRenderer.send('exportMidiFsc', {
+        "events-type": document.getElementById("events-fsc-type").value,
+    });
 };
