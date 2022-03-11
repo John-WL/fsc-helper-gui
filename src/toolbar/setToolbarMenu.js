@@ -7,22 +7,8 @@ const menuTemplate = [
   { label: 'File',
     submenu: [
       {
-        label: 'Export',
-        accelerator: 'Ctrl+E',
-        click: () => {}
-      },
-      { type: 'separator' },
-      {
         label: 'Exit',
         click: () => { app.quit(); },
-      },
-    ]
-  },
-  { label: 'Help',
-    submenu: [
-      {
-        label: 'About',
-        click: () => {},
       },
     ]
   },
